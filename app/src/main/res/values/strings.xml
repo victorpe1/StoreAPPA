@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TIENDA</string>
+    <string-array name="genero">
+        <item>HOMBRE</item>
+        <item>MUJER</item>
+        <item>NO BINARIO</item>
+    </string-array>
+</resources>
