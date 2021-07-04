@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Producto implements Serializable {
     String nombre, imagen = "default";
     Double costo, precio_unit;
-    int stock, cod_pro;
+    int stock, cod_pro, cod_cat;
     String categoria;
 
     public Producto() {
@@ -21,6 +21,14 @@ public class Producto implements Serializable {
         this.precio_unit = precio_unit;
         this.stock = stock;
         this.categoria = categoria;
+    }
+
+    public int getCod_cat() {
+        return cod_cat;
+    }
+
+    public void setCod_cat(int cod_cat) {
+        this.cod_cat = cod_cat;
     }
 
     public int getCod_pro() {

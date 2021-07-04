@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
     <androidx.cardview.widget.CardView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="true"
-        android:clickable="true"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
@@ -38,15 +37,15 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/nomCat"
+                    android:id="@+id/nomProducto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textStyle="bold"
-                    android:text="NOMBRE CATEGORIA"
+                    android:text="NOMBRE PRODUCTO"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="19dp"/>
 
@@ -62,24 +61,82 @@
                         android:layout_gravity="center_horizontal"
                         android:textAlignment="inherit"
                         android:textStyle="bold"
-                        android:text="Detalle: "
+                        android:text="Cantidad: "
                         android:textColor="@color/cardview_dark_background"
                         android:textSize="15dp"/>
 
                     <TextView
-                        android:id="@+id/detalCat"
+                        android:id="@+id/stockProducto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:layout_gravity="center_horizontal"
                         android:textAlignment="inherit"
                         android:textStyle="bold"
-                        android:inputType="textMultiLine"
+                        android:text=""
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="66dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textAlignment="inherit"
+                        android:textStyle="bold"
+                        android:text="Precio: "
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:id="@+id/precio_producto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textAlignment="inherit"
+                        android:textStyle="bold"
+                        android:text=""
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="66dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textAlignment="inherit"
+                        android:textStyle="bold"
+                        android:text="Sub Total: "
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:id="@+id/subTotalProd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textAlignment="inherit"
+                        android:textStyle="bold"
                         android:text=""
                         android:textColor="@color/cardview_dark_background"
                         android:textSize="15dp"/>
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -74,7 +74,7 @@ public class MenuUsuarioActivity extends AppCompatActivity implements CategoriaA
         listaCategoria.get(position);
         Intent i = new Intent(this, UsuarioProductoActivity.class);
         i.putExtra("Categoria", (Serializable) listaCategoria.get(position));
-
+        i.putExtra("DNI", dni_cliente);
         startActivity(i);
     }
 
@@ -104,6 +104,16 @@ public class MenuUsuarioActivity extends AppCompatActivity implements CategoriaA
         }else if(id == R.id.ver_pedido){
 
             Intent i = new Intent(this, ClientePedidoActivity.class);
+
+            i.putExtra("DNI", dni_cliente);
+            startActivity(i);
+            Toast.makeText(this, "Pedido del usuario", Toast.LENGTH_SHORT).show();
+
+        }else if(id == R.id.ver_historial){
+
+            Intent i = new Intent(this, ClienteHistorialPedidoActivity.class);
+
+            i.putExtra("DNI", dni_cliente);
             startActivity(i);
             Toast.makeText(this, "Pedido del usuario", Toast.LENGTH_SHORT).show();
 

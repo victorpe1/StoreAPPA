@@ -14,4 +14,8 @@
             android:title="VER PEDIDO"
             />
 
+        <item
+            android:id="@+id/ver_historial"
+            android:title="VER HISTORIAL"
+            />
 </menu>

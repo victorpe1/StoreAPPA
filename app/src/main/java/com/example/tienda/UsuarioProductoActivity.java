@@ -33,6 +33,8 @@ public class UsuarioProductoActivity extends AppCompatActivity implements Produc
     Producto producto;
     Categoria categoria;
 
+    private String dni_cliente;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +44,12 @@ public class UsuarioProductoActivity extends AppCompatActivity implements Produc
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         categoria = (Categoria) getIntent().getSerializableExtra("Categoria");
+        dni_cliente = getIntent().getStringExtra("DNI");
+
         codigo_categoria = categoria.getCodigoCategoria();
 
         listaProducto = consultaProductos(String.valueOf(codigo_categoria));
+
         productoAdaptador = new ProductoAdaptador(listaProducto, this);
         recyclerView.setAdapter(productoAdaptador);
 
@@ -60,7 +65,7 @@ public class UsuarioProductoActivity extends AppCompatActivity implements Produc
                 producto = BusquedaProducto(nomProducto, codigo_categoria);
                 Intent i = new Intent(this, AgregarProductoPedidoActivity.class);
                 i.putExtra("Producto", (Serializable) producto);
-
+                i.putExtra("DNI", dni_cliente);
                 startActivity(i);
 
             } catch (SQLException throwables) {
@@ -80,12 +85,13 @@ public class UsuarioProductoActivity extends AppCompatActivity implements Produc
         res = entrada.getResultSet();
         try{
             if (res.next()){
-                buscarPro.setNombre(res.getString(1));
-                buscarPro.setStock(res.getInt(2));
-                buscarPro.setCategoria(res.getString(3));
-                buscarPro.setCod_pro(res.getInt(4));
-                buscarPro.setCosto(res.getDouble(5));
-                buscarPro.setPrecio_unit(res.getDouble(6));
+                buscarPro.setCod_pro(res.getInt(1));
+                buscarPro.setNombre(res.getString(2));
+                buscarPro.setCosto(res.getDouble(3));
+                buscarPro.setPrecio_unit(res.getDouble(4));
+                buscarPro.setStock(res.getInt(5));
+                buscarPro.setCategoria(res.getString(6));
+                buscarPro.setCod_cat(res.getInt(7));
             }
         }catch(Exception e){}
 
@@ -121,7 +127,7 @@ public class UsuarioProductoActivity extends AppCompatActivity implements Produc
         listaProducto.get(position);
         Intent i = new Intent(this, AgregarProductoPedidoActivity.class);
         i.putExtra("Producto", (Serializable) listaProducto.get(position));
-
+        i.putExtra("DNI", dni_cliente);
         startActivity(i);
     }
 
