@@ -43,6 +43,7 @@ public class MenuUsuarioActivity extends AppCompatActivity implements CategoriaA
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         listaCategoria = consultaCategoria();
+
         categoriaAdaptador = new CategoriaAdaptador(listaCategoria, this);
         recyclerView.setAdapter(categoriaAdaptador);
 
@@ -55,9 +56,11 @@ public class MenuUsuarioActivity extends AppCompatActivity implements CategoriaA
             ResultSet rs = stm.executeQuery("SELECT * FROM CATEGORIA");
             while (rs.next()) {
                 Categoria p = new Categoria();
+
                 p.setCodigoCategoria(rs.getInt(1));
                 p.setNombre(rs.getString(2));
                 p.setDetalle(rs.getString(3));
+
                 consultCat.add(p);
             }
 

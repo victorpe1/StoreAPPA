@@ -26,7 +26,7 @@ public class EditarClienteAdmiActivity extends AppCompatActivity {
     private String genero_act;
     Cliente cliente;
     EditText mDNI, mNombre, mTelef, mDirec, mContra;
-    Button btnConfirmar, btnEliminar;
+    Button btnConfirmar;
 
 
     @Override
@@ -69,7 +69,6 @@ public class EditarClienteAdmiActivity extends AppCompatActivity {
         mContra.setText(cliente.getContra());
 
         btnConfirmar = (Button) findViewById(R.id.btnActualizar);
-        btnEliminar = (Button) findViewById(R.id.btnEliminar);
 
         final int cod = cliente.getCodCliente();
 
@@ -94,16 +93,6 @@ public class EditarClienteAdmiActivity extends AppCompatActivity {
             startActivity(i);
         });
 
-        btnEliminar.setOnClickListener(v ->{
-
-            Eliminar(cod);
-            Intent i = new Intent(EditarClienteAdmiActivity.this, ClienteGestionActivity.class);
-            startActivity(i);
-
-            Toast.makeText(EditarClienteAdmiActivity.this, "Cliente eliminado...", Toast.LENGTH_SHORT).show();
-
-
-        });
     }
 
     public void updateCliente(int cod, String dni, String nombre, String telef, String sex,
@@ -119,26 +108,6 @@ public class EditarClienteAdmiActivity extends AppCompatActivity {
         entrada.setString(6, direcc);
         entrada.setString(7, contra);
         entrada.execute();
-    }
-
-    public void Eliminar(int codigo) {
-
-        String sql = "DELETE FROM CLIENTE WHERE CODEMP = ?;";
-        PreparedStatement ps = null;
-        try {
-            ps = BD.conexionBD().prepareStatement(sql);
-            ps.setInt(1, codigo);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-            try {
-                ps.close();
-            } catch (Exception ex) {
-            }
-        }
     }
 
 }

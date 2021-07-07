@@ -1,16 +1,20 @@
 package com.example.tienda;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+
 import android.os.Parcelable;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import androidx.appcompat.widget.SearchView;
 
 import com.example.tienda.Adaptador.ProductoAdaptador;
 import com.example.tienda.Clase.Producto;
@@ -24,13 +28,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ProductoGestionActivity extends AppCompatActivity implements ProductoAdaptador.OnInterface {
+public class ProductoGestionActivity extends AppCompatActivity implements ProductoAdaptador.OnInterface, SearchView.OnQueryTextListener {
 
-    private Button btnBuscarProd;
     private RecyclerView  recyclerView;
     private ProductoAdaptador productoAdaptador;
-    private EditText buscarProducto;
-
+    private SearchView svBuscarProducto;
     ArrayList<Producto> listaProducto;
     Producto producto;
 
@@ -40,6 +42,8 @@ public class ProductoGestionActivity extends AppCompatActivity implements Produc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producto_gestion);
 
+        svBuscarProducto = (SearchView) findViewById(R.id.svBuscar);
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerProductos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -47,34 +51,18 @@ public class ProductoGestionActivity extends AppCompatActivity implements Produc
         productoAdaptador = new ProductoAdaptador(listaProducto, this);
         recyclerView.setAdapter(productoAdaptador);
 
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(v ->{
             Intent i = new Intent(this, CrearProductoActivity.class);
             startActivity(i);
         });
 
-        btnBuscarProd = (Button) findViewById(R.id.btnBuscarProd);
-
-        btnBuscarProd.setOnClickListener(v ->{
-            buscarProducto = (EditText) findViewById(R.id.buscarProducto);
-            String nomProducto = buscarProducto.getText().toString();
-
-            try {
-                producto = BusquedaProducto(nomProducto);
-                Intent i = new Intent(this, EditarProductoActivity.class);
-                i.putExtra("Producto", (Serializable) producto);
-
-                startActivity(i);
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-
-        });
+        svBuscarProducto.setOnQueryTextListener(this);
 
     }
 
-    public Producto BusquedaProducto(String nombre) throws SQLException {
+    /*public Producto BusquedaProducto(String nombre) throws SQLException {
         ResultSet res;
         Producto buscarPro = new Producto();
         CallableStatement entrada = BD.conexionBD().prepareCall("{call BUSCAR_PROD(?)}");
@@ -93,7 +81,7 @@ public class ProductoGestionActivity extends AppCompatActivity implements Produc
         }catch(Exception e){}
 
         return (buscarPro);
-    }
+    }*/
 
     public ArrayList<Producto> consultaProductos() {
         ArrayList<Producto> consultProducto = new ArrayList<>();
@@ -126,5 +114,17 @@ public class ProductoGestionActivity extends AppCompatActivity implements Produc
         i.putExtra("Producto", (Serializable) listaProducto.get(position));
 
         startActivity(i);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        productoAdaptador.filtrado(newText);
+        return false;
     }
 }

@@ -6,7 +6,7 @@ public class Pedido  implements Serializable {
 
     String pago, fecha;
     int cod_prod, cod_venta, cantidad;
-    String producto, categoria, DNI;
+    String producto, categoria, DNI, nombreCliente;
     Double precio, subprecio, total;
 
     public Pedido() {
@@ -24,6 +24,15 @@ public class Pedido  implements Serializable {
         this.precio = precio;
         this.subprecio = subprecio;
         this.total = total;
+    }
+
+
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
     public String getPago() {

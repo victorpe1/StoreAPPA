@@ -56,7 +56,7 @@ public class EmpleadoGestionActivity extends AppCompatActivity implements Emplea
 
         btnBuscarEmpl= (Button) findViewById(R.id.btnBuscarEmp);
 
-            btnBuscarEmpl.setOnClickListener(v -> {
+        btnBuscarEmpl.setOnClickListener(v -> {
 
                 buscarEmpleado = (EditText) findViewById(R.id.buscarEmp);
                 String dniEmpleado_buscar = buscarEmpleado.getText().toString();

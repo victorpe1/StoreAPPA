@@ -45,6 +45,7 @@ public class ClienteGestionActivity extends AppCompatActivity implements Cliente
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         listaCliente = consultaCliente();
+
         clienteAdaptador = new ClienteAdaptador(listaCliente, this);
         recyclerView.setAdapter(clienteAdaptador);
 
@@ -64,11 +65,13 @@ public class ClienteGestionActivity extends AppCompatActivity implements Cliente
 
             cliente_buscado = BusquedaCliente(dniCliente_buscar);
 
-            if(error_busqueda == false){
+            if(!error_busqueda){
+
                 Intent i = new Intent(this, EditarClienteAdmiActivity.class);
                 i.putExtra("Cliente", (Serializable) cliente_buscado);
 
                 startActivity(i);
+
             }
             else{
                 Toast.makeText(this, "No existe esa busqueda", Toast.LENGTH_SHORT).show();
@@ -85,7 +88,7 @@ public class ClienteGestionActivity extends AppCompatActivity implements Cliente
         try{
 
         Statement stm = BD.conexionBD().createStatement();
-        ResultSet res = stm.executeQuery("SELECT * FROM CLIENTE WHERE DNI='"+dni+"'");
+        ResultSet res = stm.executeQuery("SELECT * FROM CLIENTE WHERE DNI LIKE "+dni+"'+'%'");
 
             if (res.next()){
 

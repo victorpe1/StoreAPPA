@@ -92,6 +92,8 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
+    //
+
     public void setInsertCliente(String dni, String nom, String telef, String sex, String fecha_act,
                                       String contra) throws SQLException {
         CallableStatement entrada = BD.conexionBD().prepareCall("{call REGISTRO_CLIENTE(?,?,?,?,?,?)}");

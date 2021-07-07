@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TIENDA">
-        <activity android:name=".UsuarioHistorialProductoActivity"></activity>
+        <activity android:name=".PedidoGestionUsuarioActivity"></activity>
+        <activity android:name=".UsuarioHistorialProductoActivity" />
         <activity android:name=".ClienteHistorialPedidoActivity" />
         <activity android:name=".EditarPedidoProductoActivity" />
         <activity android:name=".EditarClienteAdmiActivity" />

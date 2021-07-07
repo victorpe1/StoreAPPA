@@ -105,13 +105,13 @@ public class CrearEmpleadoActivity extends AppCompatActivity {
                 insertEmpleado(DNI, nombre, telef, genero_act, direcc, fecha_act, salario, contra, cargo_act);
             } catch (SQLException e) {
                 e.printStackTrace();
-                Toast.makeText(CrearEmpleadoActivity.this, e.getErrorCode(), Toast.LENGTH_SHORT).show();
+               //Toast.makeText(CrearEmpleadoActivity.this, e.getErrorCode(), Toast.LENGTH_SHORT).show();
             }
 
             Intent i = new Intent(CrearEmpleadoActivity.this, EmpleadoGestionActivity.class);
             startActivity(i);
-
             Toast.makeText(CrearEmpleadoActivity.this, "Empleado creado...", Toast.LENGTH_SHORT).show();
+
         });
 
     }
@@ -119,7 +119,7 @@ public class CrearEmpleadoActivity extends AppCompatActivity {
     public void insertEmpleado(String dni, String nombre, String telef, String sex,
                                String direcc, String fecha, Double salario, String contra, String cargo)
             throws SQLException {
-        CallableStatement entrada = BD.conexionBD().prepareCall("{call REGISTRO_EMP_COMPLET(?,?,?,?,?,?,?,?,?)}");
+        CallableStatement entrada = BD.conexionBD().prepareCall("{call CREAR_EMP_COMPLET(?,?,?,?,?,?,?,?,?)}");
 
         entrada.setString(1, dni);
         entrada.setString(2, nombre);

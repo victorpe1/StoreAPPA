@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PedidoGestionActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gestion Pedidos"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:textStyle="italic|bold"
+        android:textColor="@color/black"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="42dp"
+        android:background="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="150dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/t1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Fecha"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="italic"
+            />
+
+        <Button
+            android:id="@+id/btnFechaEscoger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Escoger fecha"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

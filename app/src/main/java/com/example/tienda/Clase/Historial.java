@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Historial implements Serializable {
     int codVenta, codCli, codDetalle, cantidad, codProd;
-    String estado, fecha, DNI, nomProd, nomCat;
+    String estado, fecha, DNI, nomProd, nomCat, nomCli;
     Double total, subtotal, precio_unit;
 
     public Historial() {
@@ -26,6 +26,14 @@ public class Historial implements Serializable {
         this.total = total;
         this.subtotal = subtotal;
         this.precio_unit = precio_unit;
+    }
+
+    public String getNomCli() {
+        return nomCli;
+    }
+
+    public void setNomCli(String nomCli) {
+        this.nomCli = nomCli;
     }
 
     public int getCodVenta() {

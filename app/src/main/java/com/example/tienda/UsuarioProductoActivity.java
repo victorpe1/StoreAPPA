@@ -105,12 +105,14 @@ public class UsuarioProductoActivity extends AppCompatActivity implements Produc
             ResultSet rs = stm.executeQuery("SELECT * FROM PRODUCTO_2 WHERE CODCAT='"+cod+"'");
             while (rs.next()) {
                 Producto p = new Producto();
+
                 p.setCod_pro(rs.getInt(1));
                 p.setNombre(rs.getString(2));
                 p.setCosto(rs.getDouble(3));
                 p.setPrecio_unit(rs.getDouble(4));
                 p.setStock(rs.getInt(5));
                 p.setCategoria(rs.getString(6));
+
                 consultProducto.add(p);
             }
 
